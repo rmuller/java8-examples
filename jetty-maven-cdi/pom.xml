@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>eu.infomas.examples</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>        
+    </parent>
+    
+    <artifactId>jetty-maven-cdi</artifactId>
+    <packaging>war</packaging>
+
+    <name>jetty-maven-cdi</name>
+
+    <dependencies>
+<!--        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>        
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>1.2</version>
+            <scope>provided</scope>
+        </dependency>         
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.5.v20141112</version>
+                <configuration>
+                    <!-- default location for jetty-env.xml
+                    <jettyEnvXml>src/main/webapp/WEB-INF/jetty-env.xml</jettyEnvXml>
+                    -->
+                    <webApp>
+                        <overrideDescriptor>src/main/webapp/WEB-INF/web-overwrite-jetty.xml</overrideDescriptor>
+                    </webApp>
+                    <contextXml>src/main/webapp/WEB-INF/jetty-context.xml</contextXml>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jboss.weld.servlet</groupId>
+                        <artifactId>weld-servlet</artifactId>
+                        <version>2.2.7.Final</version>
+                    </dependency>                    
+                </dependencies>
+            </plugin>                        
+        </plugins>
+    </build>
+
+</project>
