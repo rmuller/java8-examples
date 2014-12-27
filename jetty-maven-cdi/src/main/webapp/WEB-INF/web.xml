@@ -4,8 +4,25 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
+    <!-- http://www.eclipse.org/jetty/documentation/current/framework-weld.html
+    Not used, using https://docs.jboss.org/weld/reference/latest/en-US/html/environments.html
+    <listener>
+      <listener-class>org.jboss.weld.environment.servlet.BeanManagerResourceBindingListener</listener-class>
+    </listener>
+    <listener>
+      <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+    </listener>
+    -->
+
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
+
+    <env-entry>
+        <description>Example  of simple JDNI (String) value</description>
+        <env-entry-name>helloName</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type> <!-- Fully Qualified Class Name! -->
+        <env-entry-value>web.xml</env-entry-value>
+    </env-entry>
 
 </web-app>
