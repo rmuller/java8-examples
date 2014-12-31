@@ -94,7 +94,6 @@ public class DefaultGreeting implements Greeting {
             NamingEnumeration e = ctx.listBindings("java:comp/env/");
             while (e.hasMore()) {
                 Binding binding = (Binding)e.next();
-
                 System.out.println("---");
                 System.out.println("Name: " + binding.getName());
                 System.out.println("Type: " + binding.getClassName());
